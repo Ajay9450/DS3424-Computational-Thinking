@@ -12,6 +12,8 @@ Example interaction:
 
 $ guile
 scheme@(guile-user)> (load "main.scm")
+scheme@(guile-user)> (diff '(* x x) 'x)
+$1 = (+ x x)
 
 d/dx (x * x)
 (+ x x)
@@ -24,3 +26,7 @@ Pros:
 Cons:
 - Simplifier is limited
 - Supports only binary operators
+
+
+Decleration:
+I have used chatgpt for this assignment. It was used to fix the syntax, and some bug fixing. main flow and approch was done by me.
