@@ -1,28 +1,39 @@
 ;; main.scm
+;; entry point for symbolic differentiation program
 
 (load "differentiator.scm")
 (load "simplifier.scm")
 
+;; --------------------------------
+;; wrapper function
+;; --------------------------------
+
 (define (differentiate expr var)
-  (simplify (deriv expr var)))
+(simplify (deriv expr var)))
 
+;; --------------------------------
+;; helper function to print results
+;; --------------------------------
 
-(display "d/dx (x + 3): ")
-(display (differentiate '(+ x 3) 'x))
-(newline)
+(define (show-derivative expr var)
+(display "d/d")
+(display var)
+(display " ")
+(display expr)
+(display " = ")
+(display (differentiate expr var))
+(newline))
 
-(display "d/dx (x * x): ")
-(display (differentiate '(* x x) 'x))
-(newline)
+;; --------------------------------
+;; test cases
+;; --------------------------------
 
-(display "d/dx (x * y): ")
-(display (differentiate '(* x y) 'x))
-(newline)
+(show-derivative '(+ x 3) 'x)
 
-(display "d/dx (sin x): ")
-(display (differentiate '(sin x) 'x))
-(newline)
+(show-derivative '(* x x) 'x)
 
-(display "d/dx (log x): ")
-(display (differentiate '(log x) 'x))
-(newline)
+(show-derivative '(* x y) 'x)
+
+(show-derivative '(sin x) 'x)
+
+(show-derivative '(log x) 'x)
